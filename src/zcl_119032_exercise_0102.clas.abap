@@ -17,11 +17,13 @@ CLASS zcl_119032_exercise_0102 IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
 
-  "Taschenrechner mit Case-When
+
   DATA operand1 TYPE p LENGTH 16 DECIMALS 2 VALUE '5.25'.
   DATA operand2 TYPE p LENGTH 16 DECIMALS 2 VALUE '7.5'.
-  DATA operator TYPE c LENGTH 3 VALUE 'xx'.
+  DATA operator TYPE c LENGTH 3 VALUE 'min'.
   DATA result TYPE p LENGTH 16 DECIMALS 2.
+
+  "Taschenrechner mit Case-When
   CASE operator.
   WHEN '+'.
   result = operand1 + operand2.
@@ -36,8 +38,10 @@ CLASS zcl_119032_exercise_0102 IMPLEMENTATION.
   result = operand1 / operand2.
   out->write( |Ergebnis der Division: | && result ).
   WHEN 'min'.
-  result = nmin( val1 = '5.25' val2 = '7.5' ).
-  out->write( |Ergebnis des Minimalwertes: | && result ).
+  result = nmin( val1 = operand1 val2 = operand2 ).
+  out->write( |Ergebnis des Minimalwertes: { result }| ).
+  When OTHERS.
+  out->write( |Fehler: ungültiger Operator| ).
   ENDCASE.
 
   "Taschenrechner mit If-Else
@@ -53,8 +57,11 @@ CLASS zcl_119032_exercise_0102 IMPLEMENTATION.
   ELSEIF ( operator = '/' ).
   result = operand1 / operand2.
   out->write( |Ergebnis der Division: | && result ).
-  Else.
+  Elseif
+  result = nmin( val1 = operand1 val2 = operand2 ).
   out->write( |Ergebnis des Minimalwertes: | && result ).
+  ELSE.
+  out->write( |Fehler: ungültiger Operator| ).
   ENDIF.
 
   ENDMETHOD.
