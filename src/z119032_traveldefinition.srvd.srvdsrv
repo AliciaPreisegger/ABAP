@@ -1,0 +1,4 @@
+@EndUserText.label: 'TravelDefinition'
+define service Z119032_TravelDefinition {
+  expose ZI_119032_Travel;
+}

@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_119032_flight IMPLEMENTATION.
+CLASS ZCL_119032_FLIGHT IMPLEMENTATION.
+
 
   METHOD get_latest_travel.
     DATA(today) = cl_abap_context_info=>get_system_date( ).
@@ -22,5 +23,4 @@ CLASS zcl_119032_flight IMPLEMENTATION.
      INTO TABLE @DATA(travels).
     r_travel = travels[ 1 ].
   ENDMETHOD.
-
 ENDCLASS.

@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_119032_demo_0101 IMPLEMENTATION.
+CLASS ZCL_119032_DEMO_0101 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
@@ -20,5 +20,4 @@ CLASS zcl_119032_demo_0101 IMPLEMENTATION.
   out->write( 'Hallo Welt!' ). "Ausgabe
 
   ENDMETHOD.
-
 ENDCLASS.

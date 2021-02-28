@@ -1,0 +1,4 @@
+@EndUserText.label: 'AnnotationsDefinition'
+define service Z119032_AnnotationsDefinition {
+  expose ZI_119032_Annotations;
+}

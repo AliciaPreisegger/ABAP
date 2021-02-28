@@ -12,17 +12,18 @@ ENDCLASS.
 
 
 
-CLASS zcl_119032_exercise_0202 IMPLEMENTATION.
+CLASS ZCL_119032_EXERCISE_0202 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
 
   "Deklaration interne Tabelle
   DATA travels TYPE z119032_travels. "Tabellentyp
+ " Alternativ: data travels type table of z119032_travel. --Interne Tabelle auf Grundlage des Strukturtyps
 
   "Einfügen von Datensätzen
   travels = VALUE #(
-  ( travel_id = '23434345' description = 'Urlaub' begin_date = '20210408' end_date = '20210410' ) ).
+  ( travel_id = '23434345' description = 'Urlaub' begin_date = '20210408') ).
 
   DATA travel1 TYPE z119032_travel.
   travel1-travel_id = 12345678.
@@ -56,13 +57,22 @@ CLASS zcl_119032_exercise_0202 IMPLEMENTATION.
   out->write( travels ).
 
   "Datensatz der 2. Reise ändern
-  travels[ 2 ]-description = 'Sommer'.
+  try.
+  travels[ 20 ]-description = 'Sommer'.
   travels[ 2 ]-begin_date = '20210818'.
+  travels[ travel_id = '23434345' ]-end_date = '20210410'.
+  catch cx_sy_itab_line_not_found. "Schief gehen lassen um Namen der Exception herauszufinden
+  ENDTRY.
   out->write( travels ).
 
   "Löschen mehrerer Reisen
   DELETE travels WHERE description = 'Städtetrip'.
   out->write( travels ).
+
+  "Reisen ausgeben Alternativ zu: out->write( travels ).
+  Loop at travels into data(travel).
+  out->write( |{ travel-travel_id } { travel-description }| ).
+  ENDLOOP.
 
   "Ausgeben der Größe der internen Tabelle
   DATA(number_of_lines) = lines( travels ).
