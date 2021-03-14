@@ -3,7 +3,7 @@
 {
 "FROM":
 [
-"/DMO/FLIGHT"
+"/DMO/CONNECTION"
 ],
 "ASSOCIATED":
 [],

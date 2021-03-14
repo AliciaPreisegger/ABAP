@@ -14,8 +14,8 @@ define view entity ZC_119032_Travel_With_Customer as select from ZI_119032_Trave
 key TravelId,
 Description,
 CustomerId,
-_customer.first_name, //Customer Daten nutzen --> Was möchte ich mit den Daten machen
-_customer.last_name,
+_customer.first_name as CustomerFirstName, //Customer Daten nutzen --> Was möchte ich mit den Daten machen
+_customer.last_name as CustomerLastName,
 BeginDate,
 EndDate,
 Price,
